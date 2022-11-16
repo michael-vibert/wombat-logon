@@ -26,4 +26,31 @@ Below is a flowchart created
 
 link to my [trello board](https://trello.com/b/5ibuUPZm) documenting my project management. 
 
+## Progress Feature One
 
+I have developed a more detailed flow chart of feature one detailed below:
+![Detail flow chart of Feature One](./images/Wombat%20Logon%20Feature%20One.drawio.png)
+
+## Proposed Classes and functions
+
+### Class User
+1. create account
+2. save User
+3. user_logon
+4. verify_user
+
+### Class Crypto
+1. encypt
+2. decrypt
+3. read_file
+4. write_file
+5. load_data
+6. hash_password
+
+### Class NewUser
+1. collect_credentials
+2. check_credentials
+3. warn_user_master_password
+
+### Class MenuScreen
+1. menu
