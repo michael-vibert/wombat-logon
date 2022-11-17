@@ -1,10 +1,11 @@
 # A class defining user objects and performing user actions
 import persistence
+
 runtime_user_dict = {}
 
 
 class User:
-    no_of_users = 0
+    no_of_users = 0     # keeps track of how many users and acts as a primary key for user table/dict
 
     def __init__(self, user_number, email, username, mast_password):
         self.email = email
@@ -19,16 +20,18 @@ class User:
 
     def user_logon(self):
         pass
-    
+    # login()
+
     def verify_logon(self):
         pass
-
 
     def print_user_attributes(self):
         print("Username: " + self.username)
         print("Email: " + self.email)
         print("User Number: " + str(self.user_number))
 
+    def find_user(self):
+        password = self.mast_password
 
 mike = User(0, 'mike.com', 'mikee', 'Password')
 print(mike.user_number)
