@@ -1,14 +1,20 @@
 # a class for creating new users of the program
+# it includes functions that check the entered terms for
+# validity. It checks email, username and master password
+# It also warns the user about the Master Password not being able to
+# be recovered if the user loses it.
 import string
+from krypto import hash_password
 
 
 def collect_credentials():
     # email = input("Enter your email: \n")
     # print(check_email(email))
-    username = input("Enter your username: \n")
-    print(check_username(username))
-    # master_password = input("Enter your master password: \n")
-    # print(check_master_password(master_password))
+    # username = input("Enter your username: \n")
+    # print(check_username(username))
+    master_password = input("Enter your master password: \n")
+    print(check_master_password(master_password))
+
 
 #  checks email for at least 1 '@' and at least 1 '.' and continues to ask until prerequisites are met
 def check_email(email):
@@ -28,12 +34,12 @@ def check_email(email):
             email = input("Enter your email: \n")
     return email
 
+
 # checks the username for length >= 5 and no spaces
 def check_username(username):
-    temp_username = ""
-
+    # Check for >= 5 characters
     while True:
-        if len(username) < 5:
+        if not check_length(username, 5):
             print("Username must be at least 5 characters")
             temp_username = input("Enter your username: \n")
             username = temp_username
@@ -41,14 +47,19 @@ def check_username(username):
             break
 
     while True:
+        spaces = 0
         for ch in username:
             if ch == " ":
+                spaces += 1
                 print("Username cannot contain spaces")
                 temp_username = input("Enter your username: \n")
                 username = temp_username
-        else:
-            break
-    return username
+                if spaces > 0:
+                    continue
+                else:
+                    break
+        return username
+
 
 # master password must contain at least 8 characters, 1 uppercase, 1 lowercase, 2 numbers and 1 special character
 def check_master_password(master_password):
@@ -57,23 +68,66 @@ def check_master_password(master_password):
     lower_case = string.ascii_lowercase
     upper_case = string.ascii_uppercase
     numbers = string.digits
-    x, y, z, a = 0, 0, 0, 0
+    w, x, y, z = 0, 0, 0, 0
 
-    # check through the different types of required characters and sum the totals of each
-    for ch in master_password:
-        if ch in lower_case:
-            x += 1
-        elif ch in upper_case:
-            y += 1
-        elif ch in numbers:
-            z += 1
-        elif ch in special_ch:
-            a += 1
+    # check through the different types of required characters and add them up
+    while True:
+        if check_length(master_password, 8):
 
-    # test to see if password is strong enough
-    if x >= 1 and y >= 1 and z >= 2 and a >= 1:
-        print("good password password")
-        return True
-    return False
+            for ch in master_password:
+                if ch in lower_case:
+                    w += 1
+                elif ch in upper_case:
+                    x += 1
+                elif ch in numbers:
+                    y += 1
+                elif ch in special_ch:
+                    z += 1
+
+            # test to see if password is strong enough
+            if w >= 2 and x >= 2 and y >= 2 and z >= 1:
+                print("good password")
+                break
+            else:
+                w, x, y, z = 0, 0, 0, 0  # reset your counting variables
+                master_password = input("Password must contain at least: \n"
+                                        "1. 2 lower case letter \n"
+                                        "2. 2 uppercase letter \n"
+                                        "3. 2 numbers \n"
+                                        "4. 1 special character (!@#$...etc) \n"
+                                        "5. 8 total characters minimum \n"
+                                        "Please enter another password: \n ")
+        else:
+            master_password = input("Password must be at least 8 characters long, Please try again: \n")
+    warn_user()
+    return hash_password(master_password)    # we only ever use the hashed password after it is created.
 
 
+# basic string length checker returns true if string is at minimum length
+def check_length(item, minimum_length):
+    return len(item) >= minimum_length
+
+
+# a special function to ensure the user knows that the only way to access the app is with
+# the Master Password and it cannot be reset.
+def warn_user():
+    yes = ['yes', 'Yes', 'YES']
+    no = ['no', 'No', 'NO']
+
+    while True:
+        agree = input("Your Master Password is the only way to access this service. \n"
+                      "It is super IMPORTANT that you remember this password and save \n"
+                      "it somewhere safe because there is no other way to reset your account!.."
+                      "\n\n"
+                      "Do you agree to keep your Master Password safe and that your saved passwords \n"
+                      "will be lost forever if you lose your Master Password? \n"
+                      "type yes or no:")
+        if any(matches in agree for matches in yes):
+            print("Welcome to Wombat Logon!! Happy Wombatting :D")
+            break
+            # save_user()
+        elif any(matches in agree for matches in no):
+            print("\nThis term is compulsory for security reasons. Please come back if you change your mind!")
+            exit(0)
+        else:
+            print("You must agree to this to use the app. Please type either yes or no:\n")
