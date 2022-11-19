@@ -8,3 +8,7 @@ def hash_password(password):
     hashed_pw = bcrypt.hashpw(password_bytes, salt)
     return hashed_pw
 
+
+def check_hash(pwd_to_test, password):
+    pwd_bytes = bytes(pwd_to_test, 'utf-8')
+    return bcrypt.checkpw(pwd_bytes, password.encode())

@@ -20,6 +20,6 @@ def re_in_state(file):
 # Called to save the data in JSON format written to file
 def save_state(userlist):
     user_json = json.dumps(userlist, cls=UserEncoder)
-    with open("C:/Users/mike1/Desktop/Wombat Logon/user_data", "w") as f:
+    with open("user_data.json", "w") as f:
         f.write(user_json)
 

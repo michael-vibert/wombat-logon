@@ -1,13 +1,17 @@
 # A class defining user objects and performing user actions
 import persistence
+import krypto
 
-runtime_user_dict = {}
+# initialise the saved users from user_data.json json file
+
+runtime_user_dict = persistence.re_in_state('user_data.json')
+
 
 
 class User:
-    no_of_users = 0     # keeps track of how many users and acts as a primary key for user table/dict
+    no_of_users = 0  # keeps track of how many users and acts as a primary key for user table/dict
 
-    def __init__(self, user_number, email, username, mast_password):
+    def __init__(self, email, username, mast_password):
         self.email = email
         self.username = username
         self.mast_password = mast_password
@@ -33,13 +37,19 @@ class User:
     def find_user(self):
         password = self.mast_password
 
-mike = User(0, 'mike.com', 'mikee', 'Password')
-print(mike.user_number)
-kate = User(0, 'kate.com', 'katie', 'Password')
-print(kate.user_number)
-User.save_user(mike)
-User.save_user(kate)
-print(runtime_user_dict)
-print(runtime_user_dict['katie'])
-h = runtime_user_dict['katie']
-User.print_user_attributes(h)
+
+for user in runtime_user_dict:
+    print(runtime_user_dict[user])
+    user = runtime_user_dict[user]
+    # User.print_user_attributes(user)
+    print(type(user['username']))
+# mike = User('mike.com', 'mikee', 'Password')
+# print(mike.user_number)
+# kate = User('kate.com', 'katie', 'Password')
+# print(kate.user_number)
+# User.save_user(mike)
+# User.save_user(kate)
+# print(runtime_user_dict)
+# print(runtime_user_dict['katie'])
+# h = runtime_user_dict['katie']
+# User.print_user_attributes(h)

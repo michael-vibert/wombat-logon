@@ -4,16 +4,20 @@
 # It also warns the user about the Master Password not being able to
 # be recovered if the user loses it.
 import string
+
+import user
 from krypto import hash_password
 
 
 def collect_credentials():
-    # email = input("Enter your email: \n")
-    # print(check_email(email))
-    # username = input("Enter your username: \n")
-    # print(check_username(username))
+    email = input("Enter your email: \n")
+    print(check_email(email))
+    username = input("Enter your username: \n")
+    print(check_username(username))
     master_password = input("Enter your master password: \n")
-    print(check_master_password(master_password))
+    pwd_hash_to_save = check_master_password(master_password)
+    this_user = user.User(email, username, pwd_hash_to_save.decode())
+    this_user.save_user()
 
 
 #  checks email for at least 1 '@' and at least 1 '.' and continues to ask until prerequisites are met
@@ -131,3 +135,5 @@ def warn_user():
             exit(0)
         else:
             print("You must agree to this to use the app. Please type either yes or no:\n")
+
+# collect_credentials()
