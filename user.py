@@ -38,11 +38,11 @@ class User:
         password = self.mast_password
 
 
-for user in runtime_user_dict:
-    print(runtime_user_dict[user])
-    user = runtime_user_dict[user]
-    # User.print_user_attributes(user)
-    print(type(user['username']))
+# for user in runtime_user_dict:
+#     print(runtime_user_dict[user])
+#     user = runtime_user_dict[user]
+#     User.print_user_attributes(user)
+#     print(type(user['username']))
 
 
 # collect_credentials()
