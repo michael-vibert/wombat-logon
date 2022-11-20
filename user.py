@@ -1,11 +1,11 @@
 # A class defining user objects and performing user actions
 import persistence
 import krypto
+from newUser import collect_credentials
 
-# initialise the saved users from user_data.json json file
+# initialise the saved users from (./user_data.json) file
 
 runtime_user_dict = persistence.re_in_state('user_data.json')
-
 
 
 class User:
@@ -43,6 +43,10 @@ for user in runtime_user_dict:
     user = runtime_user_dict[user]
     # User.print_user_attributes(user)
     print(type(user['username']))
+
+
+# collect_credentials()
+
 # mike = User('mike.com', 'mikee', 'Password')
 # print(mike.user_number)
 # kate = User('kate.com', 'katie', 'Password')

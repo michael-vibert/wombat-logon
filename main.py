@@ -1,14 +1,14 @@
 from user import User
-import newUser
-
+from newUser import collect_credentials
+from login import login
 # This is the method that gets called when the program is started
-# We will run the whoel program from here
+# We will run the whole program from here
+
+
 def main():
-    mike = User("mike@hotmail.com", "mikie", "password")
 
-    print(mike.__dict__)
-    newUser.collect_credentials()
+    login()
 
-  
+
 if __name__ == "__main__":
     main()
