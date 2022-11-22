@@ -1,7 +1,9 @@
+import persistence
+import user
 from user import User
 from newUser import collect_credentials
 from login import login
-
+from create_login import create_entry
 
 def main_menu(this_user):
     while True:
@@ -45,9 +47,11 @@ def start_menu():
 # This is the method that gets called when the program is started
 # We will run the whole program from here
 def main():
-    this_user = start_menu()
-    main_menu(this_user)
-
+    # this_user = start_menu()
+    # main_menu(this_user)
+    this_user = user.runtime_user_dict['katie']
+    print(type(this_user))
+    create_entry(this_user)
 # calls the main function
 if __name__ == "__main__":
     main()

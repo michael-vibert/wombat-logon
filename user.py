@@ -1,10 +1,7 @@
 # A class defining user objects and performing user actions
 import persistence
-import krypto
-from newUser import collect_credentials
 
 # initialise the saved users from (./user_data.json) file
-
 runtime_user_dict = persistence.re_in_state('user_data.json')
 
 

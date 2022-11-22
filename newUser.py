@@ -10,12 +10,19 @@ from krypto import hash_password
 
 
 def collect_credentials():
+    # collect email
     email = input("Enter your email: \n")
     print(check_email(email))
+
+    # collect username (for Wombat logon)
     username = input("Enter your username: \n")
     print(check_username(username))
+
+    # Collect master password for Wombat Logon
     master_password = input("Enter your master password: \n")
     pwd_hash_to_save = check_master_password(master_password)
+
+    # create and save user
     this_user = user.User(email, username, pwd_hash_to_save.decode())
     this_user.save_user()
 
@@ -41,6 +48,10 @@ def check_email(email):
 
 # checks the username for length >= 5 and no spaces
 def check_username(username):
+
+    # remove preceding and trailing spaces
+    username = username.strip()
+
     # Check for >= 5 characters
     while True:
         if not check_length(username, 5):
