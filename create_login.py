@@ -37,17 +37,25 @@ def create_entry(this_user):
         print("Would you like to generate a strong password or enter your own?\n")
         generate = input("\tType 'g' for generate or type 'e' for enter your own \n")
         if generate is 'g' or 'G':
-            username = input("Enter your username:\n")
+            password = input("Please enter your desired password:\n")
         elif generate is 'e' or 'E':
             pass
         else:
             print("Only the character g or e are accepted input, try again")
             continue
 
+        new_entry = Entry(url, entry_email, password, username)
 
-    entry = (url, entry_email, username, generate)
-    print(entry)
 
+class Entry:
+    def __init__(self, url, entry_email, password, username=None):
+        self.url = url
+        self.entry_email = entry_email
+        self.password = password
+        self.username = username
+        print("Entry created:!")
+
+    # create tuple of the entry deets.
+    # print()
 
 # create_entry()
-
