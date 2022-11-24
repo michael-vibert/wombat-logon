@@ -31,7 +31,7 @@ def load_key():
     # open secret key, read it and save to variable
     with open('secret-key.key', 'rb') as key_on_file:
         key_data = key_on_file.read()
-        print(key_data)
+
         return key_data
 
 
@@ -42,7 +42,7 @@ Returns None but saves the encrypted data to file
 def encrypt_data(key, file):
     # get the key ready to use as a Fernet key
     f = Fernet(key)
-    print(f)
+    # print(f)
     # open up the file and read it into byte data
     with open(file, 'rb') as unencrypted_file:
         original_data = unencrypted_file.read()
@@ -70,6 +70,6 @@ def decrypt_data(key, file):
 
 
 # gen_secret_key()
-key = load_key()
-encrypt_data(key, "./test2.json")
-decrypt_data(key, "./test2.json")
+# key = load_key()
+# encrypt_data(key, "./test2.json")
+# decrypt_data(key, "./test2.json")
