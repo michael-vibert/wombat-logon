@@ -25,6 +25,7 @@ def collect_credentials():
     # create and save user
     this_user = user.User(email, username, pwd_hash_to_save.decode())
     this_user.save_user()
+    return this_user
 
 
 #  checks email for at least 1 '@' and at least 1 '.' and continues to ask until prerequisites are met
@@ -45,7 +46,7 @@ def check_email(email):
             email = input("Enter your email: \n")
     return email
 
-
+# logic error - the first username entered is the one that saves regardless of further checks ##
 # checks the username for length >= 5 and no spaces
 def check_username(username):
 

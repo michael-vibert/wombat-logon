@@ -1,6 +1,7 @@
 from generate_password import random_pwd
 import validators
 from entry import Entry
+from krypto import hash_password
 
 
 def get_url():
@@ -71,16 +72,7 @@ def create_entry(this_user):
     email = get_email()
     username = get_username()
     password = get_password()
-
-    new_entry = Entry(url, email, password, username)
-
-
-
-
-
-
-
-
+    new_entry = Entry(url, email, hash_password(password), username)
 
 
 def input_pwd():
