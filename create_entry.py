@@ -1,13 +1,15 @@
+
 from generate_password import random_pwd
 import validators
 from entry import Entry
 from krypto import hash_password
+# from extract_user import extract_user
 
 
 def get_url():
     # enter the url
     while True:
-        url = input("Enter the website URL (eg. 'mikesBlog.com.au'\n")
+        url = input("Enter the website URL (eg. 'mikesBlog.com.au')\n")
         # uses the validators package for checking the expression entered for url validity
         if validators.validate_url(url):
             print("\t---->> Nice one\n")
@@ -17,13 +19,13 @@ def get_url():
     return url
 
 
-def get_email():
+def get_email(this_user):
     # Enter the email
     while True:
         print("Enter the Email you want to use with this site:\n")
         entry_email = input("\tto use the same email you use for Wombat Login type 'y'\n")
         if entry_email == 'y':
-            return "1"
+            return this_user.email
         elif validators.check_email(entry_email):
             break
         else:
@@ -69,10 +71,11 @@ def get_password():
 
 def create_entry(this_user):
     url = get_url()
-    email = get_email()
+    email = get_email(this_user)
     username = get_username()
     password = get_password()
-    new_entry = Entry(url, email, hash_password(password), username)
+    return Entry(url, email, hash_password(password), username)
+    # runtime_user_dict[this_user.username]
 
 
 def input_pwd():
@@ -84,6 +87,10 @@ def input_pwd():
         print("the passwords entered don't match! Please try again")
         input_pwd()
 
+
+# katie = extract_user('katie')
+# print(katie)
+# create_entry(katie)
 # create_entry()
 # pwd = input("Please enter a password")
 # check = input("Please re-enter the password")

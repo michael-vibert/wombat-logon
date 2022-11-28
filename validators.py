@@ -43,6 +43,6 @@ def check_email(email):
 # url = "https://docs.python.org/3.10/library/re.html#regular-expression-syntax"
 #
 # print(validate_url(url))
-mike = "   mike    "
-mike = mike.strip()
-print(mike)
+# mike = "   mike    "
+# mike = mike.strip()
+# print(mike)

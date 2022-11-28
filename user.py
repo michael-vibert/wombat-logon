@@ -1,7 +1,10 @@
 # A class defining user objects and performing user actions
+import entry
 import persistence
-
+from create_entry import create_entry
 # initialise the saved users from (./user_data.json) file
+
+
 runtime_user_dict = persistence.re_in_state('user_data.json')
 
 
@@ -14,9 +17,19 @@ class User:
         self.mast_password = mast_password
         User.no_of_users += 1
         self.user_number = User.no_of_users
+        self.entries = 0
 
     def save_user(self):
         runtime_user_dict[self.username] = self
+        persistence.save_state(runtime_user_dict)
+
+    def save_entry(self, entry):
+        # entry_to_save = create_entry(self)
+        runtime_user_dict[entry.url] = {'url': entry.url,
+                                       'email': entry.entry_email,
+                                       'password': entry.password,
+                                       'username': entry.username}
+        self.entries += 1
         persistence.save_state(runtime_user_dict)
 
     def user_logon(self):
@@ -45,7 +58,12 @@ class User:
 # collect_credentials()
 
 # mike = User('mike.com', 'mikee', 'Password')
-# print(mike.user_number)
+# print(mike.entries)
+# entry1 = entry.Entry('katie3.com.au', 'katie@hotty.com', 'blanker', '')
+# User.save_entry(mike, entry1)
+
+
+
 # kate = User('kate.com', 'katie', 'Password')
 # print(kate.user_number)
 # User.save_user(mike)
