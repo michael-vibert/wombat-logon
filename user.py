@@ -4,8 +4,18 @@ import persistence
 from create_entry import create_entry
 # initialise the saved users from (./user_data.json) file
 
+# global runtime_user_dict
+
+
+# def initialise_runtime_data():
 
 runtime_user_dict = persistence.re_in_state('user_data.json')
+if runtime_user_dict is None:
+    runtime_user_dict = {}
+
+# except TypeError or FileNotFoundError:
+#     print("We detected a No User data found error.. Initialising a new data structure.\n")
+#     runtime_user_dict = {}
 
 
 class User:
@@ -17,19 +27,12 @@ class User:
         self.mast_password = mast_password
         User.no_of_users += 1
         self.user_number = User.no_of_users
-        self.entries = 0
+        self.entries = {}
 
     def save_user(self):
+        print(runtime_user_dict)
+        print(self.print_user_attributes())
         runtime_user_dict[self.username] = self
-        persistence.save_state(runtime_user_dict)
-
-    def save_entry(self, entry):
-        # entry_to_save = create_entry(self)
-        runtime_user_dict[entry.url] = {'url': entry.url,
-                                       'email': entry.entry_email,
-                                       'password': entry.password,
-                                       'username': entry.username}
-        self.entries += 1
         persistence.save_state(runtime_user_dict)
 
     def user_logon(self):
@@ -43,32 +46,31 @@ class User:
         print("Username: " + self.username)
         print("Email: " + self.email)
         print("User Number: " + str(self.user_number))
-
-    def find_user(self):
-        password = self.mast_password
+        print("entries: " + str(self.entries))
 
 
-# for user in runtime_user_dict:
-#     print(runtime_user_dict[user])
-#     user = runtime_user_dict[user]
-#     User.print_user_attributes(user)
-#     print(type(user['username']))
+def save_entry(user, entry):
+    entry_to_save = {
+                     'email': entry.entry_email,
+                     'password': entry.password,
+                     'username': entry.username
+    }
+    runtime_user_dict[user.username]['entries'][entry.url] = entry_to_save
+    print(runtime_user_dict)
+    user.save_user()
 
-
-# collect_credentials()
-
-# mike = User('mike.com', 'mikee', 'Password')
-# print(mike.entries)
+# # katie = User('katie.com', 'katie', 'passcode')
+# # katie.save_user()
+# mikee = User('mike.com', 'mikeeMan', 'AcroMan32')
+# mikee.save_user()
+#
+#
+# name = runtime_user_dict['katie']
 # entry1 = entry.Entry('katie3.com.au', 'katie@hotty.com', 'blanker', '')
-# User.save_entry(mike, entry1)
+# save_entry(name, entry1)
+# entry2 = entry.Entry('cooking.com.au', 'katie@hotty.com', 'Usemade', '')
+# save_entry(name, entry2)
 
 
 
-# kate = User('kate.com', 'katie', 'Password')
-# print(kate.user_number)
-# User.save_user(mike)
-# User.save_user(kate)
-# print(runtime_user_dict)
-# print(runtime_user_dict['katie'])
-# h = runtime_user_dict['katie']
-# User.print_user_attributes(h)
+

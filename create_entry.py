@@ -25,7 +25,7 @@ def get_email(this_user):
         print("Enter the Email you want to use with this site:\n")
         entry_email = input("\tto use the same email you use for Wombat Login type 'y'\n")
         if entry_email == 'y':
-            return this_user.email
+            return this_user['email']
         elif validators.check_email(entry_email):
             break
         else:

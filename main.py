@@ -1,17 +1,15 @@
-import persistence
-import user
-from user import User
+
+from user import save_entry
 from newUser import collect_credentials
 from login import login
 from create_entry import create_entry
-from user import runtime_user_dict
 from extract_user import extract_user
 from generate_password import random_pwd
 
 
 def main_menu(this_user):
     while True:
-        selection = int(input(f"{this_user.username}, "
+        selection = int(input(f"{this_user['username']}, "
                               f"Please enter the number for what you would like to do: \n"
                               "\t1:   Save new logon credentials! \n"
                               "\t2:   Create a super random password \n"
@@ -20,12 +18,13 @@ def main_menu(this_user):
 
         match selection:
             case 1:
-                pass
+                temp_user_obj = extract_user(this_user['username'])
+                save_entry(temp_user_obj, create_entry(this_user))
             case 2:
                 print("Here is your random password for use however you want!\n")
                 print(random_pwd(10))
             case 3:
-                print("you selected three")
+                print("###3")
             case 4:
                 print("Thanks for using Wombat Logon, see you next time =)")
                 quit(1)
@@ -47,22 +46,17 @@ def start_menu():
                 this_user = login()      # login returns a user of type dict
                 print(f"Woo Hoo! {this_user['username']}, Let's get Wombatting!\n"
                       f"-------------------------------------------------------------")
-
-                main_menu(extract_user(this_user['username']))
+                main_menu(this_user)
+                # main_menu(extract_user(this_user['username']))
             case 3:
                 print("you selected three")
-
 
 
 # This is the method that gets called when the program is started
 # We will run the whole program from here
 def main():
     start_menu()
-    # this_user = start_menu()
-    # main_menu(this_user)
-    # this_user = user.runtime_user_dict['katie']
-    # print(type(this_user))
-    # create_entry(this_user)
+
 # calls the main function
 if __name__ == "__main__":
     main()

@@ -141,7 +141,6 @@ def warn_user():
         if any(matches in agree for matches in yes):
             print("Welcome to Wombat Logon!! Happy Wombatting :D")
             break
-            # save_user()
         elif any(matches in agree for matches in no):
             print("\nThis term is compulsory for security reasons. Please come back if you change your mind!")
             exit(0)
