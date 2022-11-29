@@ -57,7 +57,8 @@ def save_entry(user, entry):
     }
     runtime_user_dict[user.username]['entries'][entry.url] = entry_to_save
     print(runtime_user_dict)
-    user.save_user()
+    persistence.save_state(runtime_user_dict)
+    # user.save_user()
 
 # # katie = User('katie.com', 'katie', 'passcode')
 # # katie.save_user()
