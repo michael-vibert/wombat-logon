@@ -1,7 +1,7 @@
 
 from generate_password import random_pwd
 import validators
-from entry import Entry
+# from user import Entry
 from krypto import hash_password
 # from extract_user import extract_user
 
@@ -74,7 +74,9 @@ def create_entry(this_user):
     email = get_email(this_user)
     username = get_username()
     password = get_password()
-    return Entry(url, email, hash_password(password), username)
+    decoded_pwd = hash_password(password).decode('utf-8')
+
+    return {url: {'url': url, 'email': email, 'password': decoded_pwd, 'username': username}}
     # runtime_user_dict[this_user.username]
 
 

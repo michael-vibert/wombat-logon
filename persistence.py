@@ -23,3 +23,29 @@ def save_state(userlist):
     with open("user_data.json", "w") as f:
         f.write(data_json)
 
+def save_dict_state(userlist):
+    data_json = json.dumps(userlist)
+    with open("user_data.json", "w") as f:
+        f.write(data_json)
+
+def get_user_record(username):
+    with open('./user_data.json', "r") as f:
+        for i in f:
+            entry_records = json.loads(i)
+            return entry_records[username]
+
+
+''' params -> required usernmae of entries you require
+    returns -> a dictionary containing the records '''
+def get_all_user_entries(username):
+    with open('./user_data.json', "r") as f:
+        for i in f:
+            entry_records = json.loads(i)
+            return entry_records[username]['entries']
+
+
+def get_specific_user_entry(username, entry):
+    with open('./user_data.json', "r") as f:
+        for i in f:
+            entry_records = json.loads(i)
+            return entry_records[username]['entries'][entry]
