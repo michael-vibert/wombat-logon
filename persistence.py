@@ -35,7 +35,7 @@ def get_user_record(username):
             return entry_records[username]
 
 
-''' params -> required usernmae of entries you require
+''' params -> required username of entries you require
     returns -> a dictionary containing the records '''
 def get_all_user_entries(username):
     with open('./user_data.json', "r") as f:

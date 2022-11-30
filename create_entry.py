@@ -1,9 +1,8 @@
-
+import persistence
 from generate_password import random_pwd
 import validators
-# from user import Entry
 from krypto import hash_password
-# from extract_user import extract_user
+from user import runtime_user_dict
 
 
 def get_url():
@@ -16,6 +15,8 @@ def get_url():
             break
         else:
             continue
+    print(f"create url: {runtime_user_dict}")
+
     return url
 
 
@@ -25,11 +26,16 @@ def get_email(this_user):
         print("Enter the Email you want to use with this site:\n")
         entry_email = input("\tto use the same email you use for Wombat Login type 'y'\n")
         if entry_email == 'y':
-            return this_user['email']
+            record = persistence.get_user_record(this_user)
+            print(record)
+            print(type(record))
+            return record['email']
         elif validators.check_email(entry_email):
             break
         else:
             continue
+    print(f"create email: {runtime_user_dict}")
+
     return entry_email
 
 
@@ -45,6 +51,7 @@ def get_username():
             break
         else:
             continue
+    print(f"create username: {runtime_user_dict}")
 
     return username
 
@@ -66,18 +73,33 @@ def get_password():
         else:
             print("Only the character g or e are accepted input, try again")
             continue
+    print(f"create password: {runtime_user_dict}")
     return password
 
 
 def create_entry(this_user):
     url = get_url()
     email = get_email(this_user)
+    print(email)
     username = get_username()
     password = get_password()
     decoded_pwd = hash_password(password).decode('utf-8')
-
-    return {url: {'url': url, 'email': email, 'password': decoded_pwd, 'username': username}}
+    usr = persistence.get_user_record(this_user)
+    entry = {'url': url, 'email': email, 'password': decoded_pwd, 'username': username} # just removed the key url:
+    print(f'Entry: {entry}')
+    add_entry(entry, usr)
+    print(f"create entry: {runtime_user_dict}")
     # runtime_user_dict[this_user.username]
+
+def add_entry(entry, user):
+    print(user)
+    x = list(entry.keys())
+    print(x)
+    print(runtime_user_dict)
+    runtime_user_dict[user['username']]['entries'][entry['url']] = entry
+    persistence.save_state(runtime_user_dict)
+    # print(x)
+
 
 
 def input_pwd():

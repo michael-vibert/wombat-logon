@@ -1,1 +1,21 @@
-{"mikee": {"email": "mike@hot.com", "username": "mikee", "mast_password": "$2b$12$t6NJST5dv5Eji.AQDnF8J.f/VE7n2msC5A/h2rr8AHjyaIA7MZPE2", "entries": {"flask.com": {"url": "flask.com", "email": "mike@hot.com", "password": "$2b$12$E9CrARgpC0b4pjpFRLq/7uxyg5aCwW9yaJaYluLmIsEUUXAdHG7gu", "username": ""}}}}
+{
+    "mikee": {
+        "email": "mike@.com",
+        "username": "mikee",
+        "mast_password": "$2b$12$QgOuCj8VDTzshQpjVXTdvegSva0Cb6w3xOOKvVhqThEPsVvJfC8fS",
+        "entries": {
+            "leet.com": {
+                "url": "leet.com",
+                "email": "mike@.com",
+                "password": "$2b$12$gOjB8xvM3t42v/K/uBt0Eug/2bZMIpiTuAjBt9xjDudhfT4YRmO16",
+                "username": ""
+            },
+            "hacker.com": {
+                "url": "hacker.com",
+                "email": "mike@.com",
+                "password": "$2b$12$RDUBl6OsBHKe56SV9C3oRuO2qK99Wll602eMwQd.tcQvb6AH2EzeK",
+                "username": ""
+            }
+        }
+    }
+}

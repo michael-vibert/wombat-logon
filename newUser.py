@@ -25,8 +25,11 @@ def collect_credentials():
 
     # create and save user
     this_user = user.User(email, username, pwd_hash_to_save.decode())
-    # this_user.save_user()
+    print(f"create entry: {user.runtime_user_dict}")
     user_to_pass_back = persistence.get_user_record(this_user.username)
+    print(f"user to pass back: {user_to_pass_back}")
+    print(f"create entry: {user.runtime_user_dict}")
+
     return user_to_pass_back
 
 

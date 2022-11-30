@@ -17,12 +17,17 @@ class User:
         self.username = username
         self.mast_password = mast_password
         self.entries = {}
-        self.save_user()
+        dt = self.user_to_dictionary()
+        self.save_user(dt)
 
-    def save_user(self):
-        print(f'User Saved! Details:')
+    def user_to_dictionary(self):
+        return {'email': self.email, 'username': self.username, 'mast_password': self.mast_password, 'entries': self.entries}
+
+    def save_user(self, dt):
+        print('User Saved! Details:')
         self.print_user_attributes()
-        runtime_user_dict[self.username] = self
+        # print(dt)
+        runtime_user_dict[self.username] = dt
         persistence.save_state(runtime_user_dict)
 
     def print_user_attributes(self):
