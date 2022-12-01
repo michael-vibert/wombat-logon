@@ -25,10 +25,7 @@ def collect_credentials():
 
     # create and save user
     this_user = user.User(email, username, pwd_hash_to_save.decode())
-    print(f"create entry: {user.runtime_user_dict}")
     user_to_pass_back = persistence.get_user_record(this_user.username)
-    print(f"user to pass back: {user_to_pass_back}")
-    print(f"create entry: {user.runtime_user_dict}")
 
     return user_to_pass_back
 
@@ -50,6 +47,7 @@ def check_email(email):
             print("Please ensure your email is valid (it must contain @ and .)")
             email = input("Enter your email: \n")
     return email
+
 
 # logic error - the first username entered is the one that saves regardless of further checks ##
 # checks the username for length >= 5 and no spaces

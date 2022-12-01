@@ -2,7 +2,7 @@
 from user import runtime_user_dict
 from newUser import collect_credentials
 from login import login
-from create_entry import create_entry
+from create_entry import create_entry, find_entry
 from generate_password import random_pwd
 
 
@@ -21,10 +21,12 @@ def main_menu(this_user):
                 case 1:
                     create_entry(this_user['username'])
                 case 2:
-                    print("Here is your random password for use however you want!\n")
-                    print(random_pwd(10))
+                    print(f"Here is your random password \n"
+                          f"{random_pwd(10)}\n"
+                          f"Use it wisely!\n"
+                          f"<----------------------------------->\n")
                 case 3:
-                    print("###3")
+                    find_entry(this_user['username'])
                 case 4:
                     print("Thanks for using Wombat Logon, see you next time =)")
                     quit(1)
@@ -43,7 +45,6 @@ def start_menu():
 
         match selection:
             case 1:
-                print(f"create match start menu: {runtime_user_dict}")
                 main_menu(collect_credentials())
             case 2:
                 this_user = login()      # login returns a user of type dict
@@ -52,7 +53,8 @@ def start_menu():
                 main_menu(this_user)
                 # main_menu(extract_user(this_user['username']))
             case 3:
-                print("you selected three")
+                print("Thanks for using Wombat Logon, see you next time =)")
+                quit(1)
 
 
 # This is the method that gets called when the program is started

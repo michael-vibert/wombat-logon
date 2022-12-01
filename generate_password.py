@@ -1,15 +1,12 @@
 import random
 import string
 import secrets
-from krypto import hash_password
 
 """
 Returns a strong pseudo-random password that is secure enough for small scale use. 
 Note - I wouldn't generate passwords in a large organisational 
 environment but will be perfect for individual use
 """
-
-
 def random_pwd(length=10):
     i = 0
     pwd = ""
