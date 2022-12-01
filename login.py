@@ -27,8 +27,6 @@ def login():
 
 def check_username(username):                        # We can access the user through dict key user
     user_found = runtime_user_dict.get(username)     # Returns none when user not found
-    print(username)
-    print(user_found)
 
     # remember - at this stage 'user_found' is a dictionary item, not an object of class user
     if user_found is None:
