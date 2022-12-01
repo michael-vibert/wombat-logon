@@ -1,3 +1,4 @@
+import krypto
 import persistence
 from generate_password import random_pwd
 import validators
@@ -9,13 +10,12 @@ def get_url():
     # enter the url
     while True:
         url = input("Enter the website URL (eg. 'mikesBlog.com.au')\n")
-        # uses the validators package for checking the expression entered for url validity
+        # uses my validators module for checking the expression entered for url validity
         if validators.validate_url(url):
             print("\t---->> Nice one\n")
             break
         else:
             continue
-    print(f"create url: {runtime_user_dict}")
 
     return url
 
@@ -23,18 +23,16 @@ def get_url():
 def get_email(this_user):
     # Enter the email
     while True:
-        print("Enter the Email you want to use with this site:\n")
-        entry_email = input("\tto use the same email you use for Wombat Login type 'y'\n")
-        if entry_email == 'y':
-            record = persistence.get_user_record(this_user)
-            print(record)
-            print(type(record))
+        print("Enter the Email you want to use with this site:")
+        entry_email = input("\t**>> OR to use the same email you use for Wombat Login type 'y'**\n")
+        if entry_email.lower() == 'y':
+            record = persistence.get_user_record(this_user)     # record is the users account details from file
+            print(f"---> Cool.   We'll use {record['email']}")
             return record['email']
-        elif validators.check_email(entry_email):
+        elif validators.check_email(entry_email):   # check the input for email validity using my validators
             break
         else:
             continue
-    print(f"create email: {runtime_user_dict}")
 
     return entry_email
 
@@ -44,14 +42,13 @@ def get_username():
     while True:
         username = input("Do you want to include a username with this record? 'y/n'\n")
         if username == 'y':
-            username = input("Enter your username:\n")
+            username = input("Enter your username:\n")  # This can be anything
             break
         elif username == 'n':
             username = ""
             break
         else:
             continue
-    print(f"create username: {runtime_user_dict}")
 
     return username
 
@@ -77,39 +74,55 @@ def get_password():
     return password
 
 
-def create_entry(this_user):
-    url = get_url()
-    email = get_email(this_user)
-    print(email)
-    username = get_username()
-    password = get_password()
-    decoded_pwd = hash_password(password).decode('utf-8')
-    usr = persistence.get_user_record(this_user)
-    entry = {'url': url, 'email': email, 'password': decoded_pwd, 'username': username} # just removed the key url:
-    print(f'Entry: {entry}')
-    add_entry(entry, usr)
-    print(f"create entry: {runtime_user_dict}")
-    # runtime_user_dict[this_user.username]
-
-def add_entry(entry, user):
-    print(user)
-    x = list(entry.keys())
-    print(x)
-    print(runtime_user_dict)
-    runtime_user_dict[user['username']]['entries'][entry['url']] = entry
-    persistence.save_state(runtime_user_dict)
-    # print(x)
-
-
-
+""" 
+A method that gets called when the user chooses to enter their own password
+It prompts the user to enter the details twice then compares them before returning 
+the password.
+"""
 def input_pwd():
-    pwd = input("Please enter a password")
-    check = input("Please re-enter the password")
+    pwd = input("Please enter a password\n")
+    check = input("Please re-enter the password\n")
     if pwd == check:
         return pwd
     else:
         print("the passwords entered don't match! Please try again")
         input_pwd()
+
+
+"""
+The main driver of this module. 
+Params -> string username
+Creates, validates and saves a new password entry 
+Inner class that saved the entry is encapsulated from outside use
+Return -> None
+"""
+def create_entry(this_user):
+    url = get_url()
+    email = get_email(this_user)
+    username = get_username()
+    password = get_password()
+    encrypted_pwd = krypto.encrypt_password(password.encode())
+    print(encrypted_pwd)
+    print(type(encrypted_pwd))
+    usr = persistence.get_user_record(this_user)
+    entry = {'url': url, 'email': email, 'password': encrypted_pwd.decode(), 'username': username} # just removed the key url:
+
+    def add_entry(entry, user):
+        runtime_user_dict[user['username']]['entries'][entry['url']] = entry
+        persistence.save_state(runtime_user_dict)
+
+    add_entry(entry, usr)
+
+# Method to find a password entry in memory & return it
+def find_entry(username):
+    url_search = input("Please enter the URL that you would like to get access to:\n")
+    if url_search is None:
+        find_entry(username)
+    else:
+        print(persistence.get_specific_user_entry(username, url_search))
+    # runtime_user_dict[username['username']]['entries'][entry['url']] = entry
+
+
 
 
 # katie = extract_user('katie')

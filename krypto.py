@@ -34,7 +34,16 @@ def load_key():
 
         return key_data
 
-
+def encrypt_password(data):
+    f = Fernet(load_key())
+    return f.encrypt(bytes(data))
+def decrypt_password(data):
+    f = Fernet(load_key())
+    return f.decrypt(bytes(data))
+# key = load_key()
+# encrytped = (encrypt_password(b'michael'))
+# decrypted = decrypt_password(encrytped)
+# print(decrypted)
 """
 Encrypt a file. Params the key you want to use and the file you want to encrypt 
 Returns None but saves the encrypted data to file

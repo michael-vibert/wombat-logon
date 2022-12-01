@@ -1,6 +1,4 @@
 
-# from user import save_entry
-import persistence
 from user import runtime_user_dict
 from newUser import collect_credentials
 from login import login
@@ -9,9 +7,7 @@ from generate_password import random_pwd
 
 
 def main_menu(this_user):
-    print(type(this_user))
-    print(this_user)
-    print(f"create main menu: {runtime_user_dict}")
+
 
     while True:
             selection = int(input(f"{this_user['username']}, "
@@ -23,9 +19,7 @@ def main_menu(this_user):
 
             match selection:
                 case 1:
-                    user = this_user['username']
-                    entry_to_add = create_entry(user)
-
+                    create_entry(this_user['username'])
                 case 2:
                     print("Here is your random password for use however you want!\n")
                     print(random_pwd(10))

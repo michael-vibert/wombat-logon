@@ -18,7 +18,7 @@ def login():
     while True:
         entered_pwd = input("Enter your master password: \n")
         if check_hash(entered_pwd, this_user.get('mast_password')):
-            print(check_hash(entered_pwd, this_user.get('mast_password')))
+            # print(check_hash(entered_pwd, this_user.get('mast_password')))
             return runtime_user_dict.get(username)
         else:
             continue
