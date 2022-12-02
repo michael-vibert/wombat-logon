@@ -1,11 +1,11 @@
 # A class defining user objects and performing user actions
-import persistence
 
+import persistence 
 
 ''' initialise the saved users from (./user_data.json) file,
     be sure to put a pair of empty curly braces in the json file if
     the file is initially empty '''
-runtime_user_dict = persistence.re_in_state('user_data.json')
+runtime_user_dict = persistence.re_in_state('./user_data.json')
 
 """ Class for new users of the application.
     When called and passed the correct arguments the class will 
