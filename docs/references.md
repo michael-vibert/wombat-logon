@@ -1,0 +1,12 @@
+# References
+1. [Encryption of data to be saved from cryptography.io:](https://cryptography.io/en/latest/fernet/#cryptography.fernet.Fernet)
+2. [Applying encryption from GeeksforGeeks](https://www.geeksforgeeks.org/encrypt-and-decrypt-files-using-python/)
+3. [https://www.thepythoncode.com/code/encrypt-decrypt-files-symmetric-python](https://www.thepythoncode.com/code/encrypt-decrypt-files-symmetric-python)
+4. [https://docs.python.org/3.10/library/re.html#regular-expression-syntax](https://docs.python.org/3.10/library/re.html#regular-expression-syntax)
+5. [https://www.w3schools.com/python/python_dictionaries_add.asp](https://www.w3schools.com/python/python_dictionaries_add.asp)
+6. [https://www.w3schools.com/python/python_dictionaries_access.asp](https://www.w3schools.com/python/python_dictionaries_access.asp)
+7. [https://docs.python.org/3/library/json.html](https://docs.python.org/3/library/json.html)
+8. [https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/crypto/bcrypt/BCrypt.html](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/crypto/bcrypt/BCrypt.html)
+9. [https://pypi.org/project/colorama/](https://pypi.org/project/colorama/)
+10. [https://www.w3schools.com/python/python_regex.asp](https://www.w3schools.com/python/python_regex.asp)
+11. [https://www.geeksforgeeks.org/write-regular-expressions/](https://www.geeksforgeeks.org/write-regular-expressions/)

@@ -30,7 +30,7 @@ def save_dict_state(userlist):
 
 """Looks up a username and returns their user account records"""
 def get_user_record(username):
-    with open('./user_data.json', "r") as f:
+    with open('user_data.json', "r") as f:
         for i in f:
             entry_records = json.loads(i)
             return entry_records[username]
@@ -39,7 +39,7 @@ def get_user_record(username):
 ''' params -> required username of entries you require
     returns -> a dictionary containing the records '''
 def get_all_user_entries(username):
-    with open('./user_data.json', "r") as f:
+    with open('user_data.json', "r") as f:
         for i in f:
             entry_records = json.loads(i)
             return entry_records[username]['entries']
@@ -48,7 +48,7 @@ Returns the specific entry details in a dictionary
 Params -> string username and string url to search for
 """
 def get_specific_user_entry(username, entry):
-    with open('./user_data.json', "r") as f:
+    with open('user_data.json', "r") as f:
         for i in f:
             entry_records = json.loads(i)
             if entry_records[username]['entries'].get(entry):

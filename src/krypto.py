@@ -1,6 +1,7 @@
 import bcrypt
 from cryptography.fernet import Fernet
 
+
 """
 Param -> string to be salted and hashed
 Returns -> Hash of the password string
@@ -84,5 +85,5 @@ def decrypt_data(key, file):
 
     decrypted_data = f.decrypt(data_encrypted)
 
-    with open('./decrypted_data.json', 'wb') as decrypted_file:
+    with open('decrypted_data.json', 'wb') as decrypted_file:
         decrypted_file.write(decrypted_data)

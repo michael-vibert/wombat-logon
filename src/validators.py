@@ -39,10 +39,3 @@ def check_email(email):
             print("Please ensure your email is valid (it must contain @ and .)")
             email = input("Enter your email: \n")
     return email
-
-# url = "https://docs.python.org/3.10/library/re.html#regular-expression-syntax"
-#
-# print(validate_url(url))
-# mike = "   mike    "
-# mike = mike.strip()
-# print(mike)

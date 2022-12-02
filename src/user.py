@@ -1,7 +1,6 @@
 # A class defining user objects and performing user actions
 
-import persistence
-
+from src import persistence
 
 ''' initialise the saved users from (./user_data.json) file,
     be sure to put a pair of empty curly braces in the json file if

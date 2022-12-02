@@ -7,7 +7,8 @@ Returns a strong pseudo-random password that is secure enough for small scale us
 Note - I wouldn't generate passwords in a large organisational 
 environment but will be perfect for individual use
 """
-def random_pwd(length=10):
+def random_pwd(length=10):  # I made a default here for future functionality where
+                            # the user can choose the strength of the password
     i = 0
     pwd = ""
     while i in range(length):
