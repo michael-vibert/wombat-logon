@@ -120,12 +120,13 @@ def find_entry(username):
 
         if raw_entry_data is None:
             print("Sorry, URL not found, please try again!\n")
-            find_entry(username)
-        print("----->   Sweet! Here are your records, freshly decrypted!\n")
-        encrypted_pwd = raw_entry_data['password']
-        decrypted_pwd = krypto.decrypt_password(encrypted_pwd.encode())
-        display_entry(raw_entry_data, decrypted_pwd.decode())
-        break
+            continue
+        else:
+            print("----->   Sweet! Here are your records, freshly decrypted!\n")
+            encrypted_pwd = raw_entry_data['password']
+            decrypted_pwd = krypto.decrypt_password(encrypted_pwd.encode())
+            display_entry(raw_entry_data, decrypted_pwd.decode())
+            break
 
 
 def display_entry(entry, decrypt_pwd):
