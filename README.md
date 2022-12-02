@@ -85,9 +85,20 @@ Flow chart of feature one detailed below:
 ## Feature Two
 
 Flow chart of feature two detailed below:
-![Detail flow chart of Feature Two](./docs/FeatureOne.drawio.png)
-![Checklist for Feature One](./docs/checklistF1.png)
+![Detail flow chart of Feature Two](./docs/FlowChartFeatureTwo.drawio.png)
+![Checklist for Feature Two](./docs/checklistF2.png)
 [More details available on my trello board](https://trello.com/b/5ibuUPZm)
+
+## Feature Three
+
+Flow chart of feature two detailed below:
+![Detail flow chart of Feature Three](./docs/Wombat%20Logon%20Feature%20Three.drawio.png)
+![Checklist for Feature Three](./docs/checklistF3.png)
+[More details available on my trello board](https://trello.com/b/5ibuUPZm)
+
+## Help Documentation
+To install and run this application please follow these steps:
+1. From your terminal ### TO DO
 
 ### References
 [Link To Reference Sources for this project](docs/references.md)
