@@ -1,5 +1,5 @@
 # Wombat Logon
-
+Adding some test text to project
 Welcome to Wombat Logon, the only terminal application you will ever need for storing your passwords. Handy, efficient and places the power to remain secure right in your hands.  
 _**Please note that this is a practice project and you should NOT trust that this password manager will keep your
 passwords safe. Please DO NOT download and use this for real**_
