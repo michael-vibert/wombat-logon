@@ -30,11 +30,15 @@ def main_menu(this_user):
                         find_entry(this_user['username'])
                     case 4:
                         print(f"Thanks for using Wombat Logon, see you next time =)\n"
-                            f"{Fore.YELLOW}Have a nice day!{Style.RESET_ALL}")
+                            f"{Fore.YELLOW}Have a nice day!{Style.RESET_ALL}\n")
                         quit(1)
-                    
-            except ValueError:
-                print("Invalid input, please try again!\n")
+                    case _:
+                        print(f"Invalid input: {selection}. Please only input numbers 1, 2 or 3!\n")
+                        continue
+                               
+            except (TypeError, ValueError) as error:
+                print(f"Invalid input, we've detected a {Fore.LIGHTYELLOW_EX}{error.__class__} for input: {selection}{Style.RESET_ALL} please only input 1, 2 or 3!\n")
+
 
 def start_menu():
     while True:
@@ -58,10 +62,10 @@ def start_menu():
                         f"{Fore.YELLOW}Have a nice day!{Style.RESET_ALL}")
                     quit(1)
                 case _:
-                    print("Invalid input, please try again!\n")
+                    print(f"Invalid input: {selection}. Please only input numbers 1, 2 or 3!\n")
                     continue
-        except ValueError:
-            print("Invalid input, please try again!\n")
+        except (TypeError, ValueError) as error:
+            print(f"Invalid input, we've detected a {Fore.LIGHTYELLOW_EX}{error.__class__.__name__}{Style.RESET_ALL} please only input 1, 2 or 3!\n")
 
 
 # This is the method that gets called when the program is started
