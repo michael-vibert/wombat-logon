@@ -31,17 +31,26 @@ This will mean that you lose the key forever, which is the key that decrypts all
 In other words - my advice is to make a copy of your secret key and keep it safe!
 '"""
 def gen_secret_key():
-    key = Fernet.generate_key()
-    with open('secret-key.key', 'wb') as keys_to_kingdom:
-        keys_to_kingdom.write(key)
+    try:
+        key = Fernet.generate_key()
+        with open('secret-key.key', 'wb') as keys_to_kingdom:
+            keys_to_kingdom.write(key)
+    except FileNotFoundError as e:
+        print(f"No no with secret key found. The error came back as: {e}")
+
 
 
 def load_key():
     # open secret key, read it and save to variable
-    with open('secret-key.key', 'rb') as key_on_file:
-        key_data = key_on_file.read()
+    try:    
+        with open('ssecret-key.key', 'rb') as key_on_file:
+            key_data = key_on_file.read()
 
-        return key_data
+            return key_data
+    except FileNotFoundError as e:
+        print("File to load key from was not found, please check your settings and try again")
+        print(f"Error Type encourntered: {e}")
+        quit()       
 
 
 def encrypt_password(data):

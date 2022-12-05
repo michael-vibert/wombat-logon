@@ -1,6 +1,5 @@
 from colorama import Fore, Style
-from user import runtime_user_dict
-from newUser import collect_credentials
+from new_user import collect_credentials
 from login import login
 from create_entry import create_entry, find_entry
 from generate_password import random_pwd

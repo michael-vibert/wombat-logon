@@ -19,13 +19,15 @@ class User:
         dt = self.user_to_dictionary()
         self.save_user(dt)
 
+    # I changed the data type straight into a dictionary to avoid storage difficulties later
+    # after you re-in-state the user data
     def user_to_dictionary(self):
         return {'email': self.email, 'username': self.username, 'mast_password': self.mast_password, 'entries': self.entries}
-
+    # Save the new user data straight into runtime_user_dict where it will be saved into file later.
+    # This helps with the problem of users being objects during this session then dictionaries on the next session
     def save_user(self, dt):
         print('User Saved! Details:')
         self.print_user_attributes()
-        # print(dt)
         runtime_user_dict[self.username] = dt
         persistence.save_state(runtime_user_dict)
 

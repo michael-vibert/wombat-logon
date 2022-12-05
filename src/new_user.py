@@ -4,7 +4,7 @@
 # It also warns the user about the Master Password not being able to
 # be recovered if the user loses it.
 import string
-
+from colorama import Style, Back, Fore
 import persistence
 import user
 from krypto import hash_password
@@ -12,12 +12,12 @@ from krypto import hash_password
 
 def collect_credentials():
     # collect email
-    email = input("Enter your email: \n")
-    print(check_email(email))
+    email = check_email()
+    print(f"I like that one: {email}\n")
 
-    # collect username (for Wombat logon)
-    username = input("Enter your username: \n")
-    print(check_username(username))
+    # collect username (for whole Wombat logon program)
+    username = check_username()
+    print(f"---> Excellent work {username}\n")
 
     # Collect master password for Wombat Logon
     master_password = input("Enter your master password: \n")
@@ -31,11 +31,12 @@ def collect_credentials():
 
 
 #  checks email for at least 1 '@' and at least 1 '.' and continues to ask until prerequisites are met
-def check_email(email):
+def check_email():
+    email = input("Enter your email: \n")
+    
     while True:
         at, period = False, False
-
-        for ch in email:
+        for ch in email.strip():
             if ch == '@':
                 at = True
             if ch == '.':
@@ -44,15 +45,20 @@ def check_email(email):
         if at and period is True:
             break
         else:
-            print("Please ensure your email is valid (it must contain @ and .)")
-            email = input("Enter your email: \n")
+            print(f"Please ensure your email is valid {Back.LIGHTRED_EX}(it must contain @ and .){Style.RESET_ALL}")
+            email = input("Try again and enter another email: \n")
     return email
 
+# print(check_email())
+
+# basic string length checker returns true if string is at minimum length
+def check_length(item, minimum_length):
+    return len(item) >= minimum_length
 
 # logic error - the first username entered is the one that saves regardless of further checks ##
 # checks the username for length >= 5 and no spaces
-def check_username(username):
-
+def check_username():
+    username = input("Please enter your account Username:\n")
     # remove preceding and trailing spaces
     username = username.strip()
 
@@ -64,7 +70,8 @@ def check_username(username):
             username = temp_username
         else:
             break
-
+        
+    # Check for spaces in the username
     while True:
         spaces = 0
         for ch in username:
@@ -79,7 +86,7 @@ def check_username(username):
                     break
         return username
 
-
+# print(check_username())
 # master password must contain at least 8 characters, 1 uppercase, 1 lowercase, 2 numbers and 1 special character
 def check_master_password(master_password):
     # set the initial parameters
@@ -122,10 +129,6 @@ def check_master_password(master_password):
     return hash_password(master_password)    # we only ever use the hashed password after it is created.
 
 
-# basic string length checker returns true if string is at minimum length
-def check_length(item, minimum_length):
-    return len(item) >= minimum_length
-
 
 # a special function to ensure the user knows that the only way to access the app is with
 # the Master Password and it cannot be reset.
@@ -149,5 +152,3 @@ def warn_user():
             exit(0)
         else:
             print("You must agree to this to use the app. Please type either yes or no:\n")
-
-# collect_credentials()
