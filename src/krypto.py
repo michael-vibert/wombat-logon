@@ -43,7 +43,7 @@ def gen_secret_key():
 def load_key():
     # open secret key, read it and save to variable
     try:    
-        with open('ssecret-key.key', 'rb') as key_on_file:
+        with open('secret-key.key', 'rb') as key_on_file:
             key_data = key_on_file.read()
 
             return key_data
