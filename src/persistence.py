@@ -70,7 +70,7 @@ Params -> string username and string url to search for
 """
 def get_specific_user_entry(username, entry):
     try:
-        with open('uuser_data.json', "r") as f: # need to look up how to check how to catch exception where file doesn't exist
+        with open('user_data.json', "r") as f: # need to look up how to check how to catch exception where file doesn't exist
             for i in f:
                 entry_records = json.loads(i)
                 if entry_records[username]['entries'].get(entry):

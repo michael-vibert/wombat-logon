@@ -38,9 +38,6 @@ class User:
 
 
 
-# mikee = User('mike.com', 'mikeeMan', 'AcroMan32')
-# entry1 = Entry('blackfriday.com', 'mike@hot.com', 'AcroMan32!', None, runtime_user_dict['mikee'])
-
 
 
 
