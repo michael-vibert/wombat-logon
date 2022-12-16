@@ -1,11 +1,32 @@
 # Wombat Logon
-Adding some test text to project
 Welcome to Wombat Logon, the only terminal application you will ever need for storing your passwords. Handy, efficient and places the power to remain secure right in your hands.  
 _**Please note that this is a practice project and you should NOT trust that this password manager will keep your
 passwords safe. Please DO NOT download and use this for real**_
 
+## Installation and Running Wombat Logon
+
+### 1. 
+From a Bash terminal, navigate into the src directory  
+``` cd <path../to..>/src ```  
+### 2.
+Run the following command:  
+``` bash install.sh ```  
+This script will check that you computer has all of the correct programs installed that are required to run Wombat Logon. 
+
+### Requirements 
+1. Python 3 or higher
+2. bcrypt 4.0.0
+3. cryptography 37.0.4
+4. colorama 0.4.6
+5. pytest 7.2.0  
+
+[link to requirements.txt](./src/requirements.txt)
+
+
+
 ## Source Control
 [https://github.com/michael-vibert/wombat-logon](https://github.com/michael-vibert/wombat-logon)
+
 ## Python Style Guide
 [https://peps.python.org/pep-0008/](https://peps.python.org/pep-0008/)
 
@@ -67,13 +88,15 @@ your password the data will be found and the password decrypted (as described ab
 
 There are many many other features within Wombat Logon which you will discover by digging into the 
 code and seeing how my novice approach to password management is achieved.
+
 # Implementation Plan
 I have a high level overview of the major sections of this project. 
 Below you will find a high level flowchart of the various sections/features.
-### link to Trello
-- link to my [trello board](https://trello.com/b/5ibuUPZm) documenting my project management. 
 
 ![flowchart of high level app](./docs/Wombat%20Logon.drawio.png)
+
+### link to Trello
+- link to my [trello board](https://trello.com/b/5ibuUPZm) documenting my project management. 
 
 ## Feature One
 
@@ -82,7 +105,7 @@ Flow chart of feature one detailed below:
 ![Checklist for Feature One](./docs/checklistF1.png)
 [More details available on my trello board](https://trello.com/b/5ibuUPZm)
 
-## Feature Two
+## Feature Two & Four
 
 Flow chart of feature two detailed below:
 ![Detail flow chart of Feature Two](./docs/FlowChartFeatureTwo.drawio.png)

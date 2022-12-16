@@ -79,10 +79,3 @@ def get_specific_user_entry(username, entry):
                     return None
     except Exception as e:
         print(f"Exception Caught as: {e}")
-
-
-# with open("mike.txt", "w") as f:
-#     f.write("hi everybody, Im doctor Nic")
-
-# Need to find out how to look to see if the file passed exists or not before writing
-# because when it doesn't python creates a new file with that name.  
