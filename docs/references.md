@@ -10,3 +10,4 @@
 9. [https://pypi.org/project/colorama/](https://pypi.org/project/colorama/)
 10. [https://www.w3schools.com/python/python_regex.asp](https://www.w3schools.com/python/python_regex.asp)
 11. [https://www.geeksforgeeks.org/write-regular-expressions/](https://www.geeksforgeeks.org/write-regular-expressions/)
+12. [https://stackoverflow.com/questions/35851323/how-to-test-a-function-with-input-call](https://stackoverflow.com/questions/35851323/how-to-test-a-function-with-input-call)
