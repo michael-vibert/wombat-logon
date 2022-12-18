@@ -99,7 +99,9 @@ def create_entry(this_user):
     password = get_password()
     encrypted_pwd = krypto.encrypt_password(password.encode())
     usr = persistence.get_user_record(this_user)
-    entry = {'url': url, 'email': email, 'password': encrypted_pwd.decode(), 'username': username} # just removed the key url:
+    entry = {'url': url, 'email': email, 'password': encrypted_pwd.decode(), 
+             'username': username}
+    
 
     def add_entry(entry, user):
         runtime_user_dict[user['username']]['entries'][entry['url']] = entry

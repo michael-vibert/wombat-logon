@@ -90,8 +90,8 @@ def check_username():
 # master password must contain at least 8 characters, 1 uppercase, 1 lowercase, 2 numbers and 1 special character
 def check_master_password(master_password):
     # set the initial parameters
-    special_ch = "!@#$%^&*()_,+=<>/?:;"
-    lower_case = string.ascii_lowercase
+    special_ch = "!@#$%^&*()_,+=<>/?:;[{]}-~`"
+    lower_case = string.ascii_lowercase     # this makes a string of of the lower case letters storing it in a variable
     upper_case = string.ascii_uppercase
     numbers = string.digits
     w, x, y, z = 0, 0, 0, 0

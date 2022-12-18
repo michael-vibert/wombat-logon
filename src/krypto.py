@@ -39,7 +39,6 @@ def gen_secret_key():
         print(f"No no with secret key found. The error came back as: {e}")
 
 
-
 def load_key():
     # open secret key, read it and save to variable
     try:    
