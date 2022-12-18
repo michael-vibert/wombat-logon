@@ -18,7 +18,6 @@ def login():
     while True:
         entered_pwd = input("Enter your master password: \n")
         if check_hash(entered_pwd, this_user.get('mast_password')):
-            # print(check_hash(entered_pwd, this_user.get('mast_password')))
             return runtime_user_dict.get(username)
         else:
             continue
@@ -32,6 +31,6 @@ def check_username(username):                        # We can access the user th
     if user_found is None:
         print("User not found, try again:\n")
     else:
-        print(f"found user: {user_found['username']}")  # <-- these are the two ways to access the dictionary items
-        print(f"found user password: {user_found.get('mast_password')}")    # <-- see here, another way
+        print(f"found user: {user_found['username']}\n")  # <-- these are the two ways to access the dictionary items
+        print(f"found user hashed master-password: {user_found.get('mast_password')}\n")    # <-- see here, another way
     return user_found   # returns the dict key(username) relating to this particular user

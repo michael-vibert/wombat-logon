@@ -11,14 +11,15 @@ From a Bash terminal, navigate into the src directory
 ### 2.
 Run the following command:  
 ``` bash install.sh ```  
-This script will check that you computer has all of the correct programs installed that are required to run Wombat Logon. 
+This script will check that you computer has all of the correct programs installed that are required to run Wombat Logon and install the required modules if you dont have them. 
 
 ### Requirements 
 1. Python 3 or higher
 2. bcrypt 4.0.0
 3. cryptography 37.0.4
 4. colorama 0.4.6
-5. pytest 7.2.0  
+5. pytest 7.2.0
+6. mock 4.0.3  
 
 [link to requirements.txt](./src/requirements.txt)
 

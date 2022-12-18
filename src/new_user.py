@@ -26,7 +26,8 @@ def collect_credentials():
     # create and save user
     this_user = user.User(email, username, pwd_hash_to_save.decode())
     user_to_pass_back = persistence.get_user_record(this_user.username)
-
+    
+    # return the username of the person who has just successfully created an account
     return user_to_pass_back
 
 
@@ -49,7 +50,6 @@ def check_email():
             email = input("Try again and enter another email: \n")
     return email
 
-# print(check_email())
 
 # basic string length checker returns true if string is at minimum length
 def check_length(item, minimum_length):
@@ -86,8 +86,8 @@ def check_username():
                     break
         return username
 
-# print(check_username())
-# master password must contain at least 8 characters, 1 uppercase, 1 lowercase, 2 numbers and 1 special character
+
+# master password must contain at least 8 characters, 2 uppercase, 2 lowercase, 2 numbers and 1 special character
 def check_master_password(master_password):
     # set the initial parameters
     special_ch = "!@#$%^&*()_,+=<>/?:;[{]}-~`"
@@ -127,7 +127,6 @@ def check_master_password(master_password):
             master_password = input("Password must be at least 8 characters long, Please try again: \n")
     warn_user()
     return hash_password(master_password)    # we only ever use the hashed password after it is created.
-
 
 
 # a special function to ensure the user knows that the only way to access the app is with
